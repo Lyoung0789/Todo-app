@@ -19,11 +19,17 @@ export default function App() {
     });
   };
 
+  const pressButton = (text) => {
+    setTodos((prevTodos) => {
+      return [{ text: text, key: Math.random().toString() }, ...prevTodos];
+    });
+  };
+
   return (
     <View style={styles.container}>
       <Header />
       <View style={styles.content}>
-        <AddTodo />
+        <AddTodo pressButton={pressButton} />
         <View style={styles.list}>
           <FlatList
             data={todos}
